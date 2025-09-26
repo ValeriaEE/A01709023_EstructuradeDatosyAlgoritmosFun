@@ -1,5 +1,6 @@
 # A01709023_EstructuradeDatosyAlgoritmosFun
 Proyecto de la clase TC1031.603 Programacion de estructura de datos y algoritmos fundamentales 
+Valeria Escalante Campos A01709023 
 
 ## *Contexto*
 Este programa está diseñado para mejorar la organización del grupo estudiantil de robótica TecDroid 3354. Dentro del equipo existen tres tipos principales de integrantes:
