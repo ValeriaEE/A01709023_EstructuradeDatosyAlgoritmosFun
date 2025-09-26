@@ -54,7 +54,8 @@ public:
 //Genera una lista de quienes pueden ir al regional 
     void generarListaAsistentes();
 
-    void bubbleSortEstudiantesPorPuntos(); 
+    void bubbleSortEstudiantesPorPuntos();
+    void bubbleSortMentoresPorHoras();  
 };
 
 // Destructores para todas las personas
@@ -189,5 +190,17 @@ void Administrador::bubbleSortEstudiantesPorPuntos() {
         }
     }
 }
-
+// Ordenar por bubble Sort a los mentores
+void Administrador::bubbleSortMentoresPorHoras() {
+    for (int i = 0; i < numMentores - 1; i++) {
+        for (int j = 0; j < numMentores - i - 1; j++) {
+            if (mentores[j]->getHorasServicio() < mentores[j + 1]->getHorasServicio()) {
+                // Intercambio de apuntadores
+                Mentor* temp = mentores[j];
+                mentores[j] = mentores[j + 1];
+                mentores[j + 1] = temp;
+            }
+        }
+    }
+}
 #endif
