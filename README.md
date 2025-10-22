@@ -1,8 +1,8 @@
-# A01709023_EstructuradeDatosyAlgoritmosFun
+# Proyecto: Registro de estudiantes TecDroid
 Proyecto de la clase TC1031.603 Programacion de estructura de datos y algoritmos fundamentales 
 Valeria Escalante Campos A01709023 
 
-## *Contexto*
+## Contexto
 Este programa está diseñado para mejorar la organización del grupo estudiantil de robótica TecDroid 3354. Dentro del equipo existen tres tipos principales de integrantes:
 
 Estudiantes (divididos en mesa directiva y colaboradores)
@@ -31,7 +31,29 @@ Se asegura que por cada 15 estudiantes haya al menos un profesor acompañante, c
 
 Este sistema ayuda a mantener el control del equipo de forma automatizada, asegurando que se cumplan los requisitos para asistir a los eventos y organizando de forma clara quiénes van y quiénes acompañan. 
 
-## *Como usar el programa*
+## SICT0301 Evalua los Componentes 
+### A Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
+Analisis de complejidad de merge sort 
+
+### B Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
+Analisis de complejidad de lista doblemente encadenada 
+
+## SICT0302 Toma de Decisiones
+### A Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
+Porque elegi merge sort 
+
+### B Selecciona una estructura de datos adecuada al problema y la usa correctamente.
+Porque elgi la lista doblemente encadenada 
+
+
+## SICT0303 Implementa Acciones Científicas
+### Implementa mecanismos para consultar información de las estructras correctos.
+quien sabe 
+
+### Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
+Como use el archivo de la lista de alumnos 
+
+## Como usar el programa
 Compilar el programa
 
 ***g++ menuTD.cpp -o menuTD***
@@ -71,20 +93,4 @@ Opción 0: Salir del sistema.
 
 Solo necesita seguir las instrucciones que aparecen en consola, escribiendo los datos que se piden.
 
-## *Analisis de complejidad y justificacion* 
 
-El programa utiliza el algoritmo Bubble Sort para ordenar:
-
-Estudiantes (por puntos).
-
-Mentores (por horas de servicio).
-
-Complejidad de Bubble Sort
-
-Tiempo:
-
-Peor caso y caso promedio: O(n²)
-
-Mejor caso (lista ya ordenada): O(n²)
-
-Se usa Bubble Sort porque es un algoritmo muy sencillo de implementar y entender, lo que lo hace perfecto para un proyecto como este donde como mucho en el equipo habrá unas 70 personas. Además, el programa solo trabaja con un máximo de 100 elementos, así que la eficiencia cuadrática no representa un problema real. También es útil porque permite mostrar de manera clara cómo se pueden ordenar objetos como estudiantes o mentores sin necesidad de estructuras complicadas. Bubble Sort resulta una buena elección: es simple, práctico y cumple con lo que el programa necesita.
