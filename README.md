@@ -32,25 +32,25 @@ Se asegura que por cada 15 estudiantes haya al menos un profesor acompañante, c
 Este sistema ayuda a mantener el control del equipo de forma automatizada, asegurando que se cumplan los requisitos para asistir a los eventos y organizando de forma clara quiénes van y quiénes acompañan. 
 
 ## SICT0301 Evalua los Componentes 
-# A Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
+### A Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
 Analisis de complejidad de merge sort 
 
-# B Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
+### B Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
 Analisis de complejidad de lista doblemente encadenada 
 
 ## SICT0302 Toma de Decisiones
-# A Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
+### A Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
 Porque elegi merge sort 
 
-# B Selecciona una estructura de datos adecuada al problema y la usa correctamente.
+### B Selecciona una estructura de datos adecuada al problema y la usa correctamente.
 Porque elgi la lista doblemente encadenada 
 
 
 ## SICT0303 Implementa Acciones Científicas
-# Implementa mecanismos para consultar información de las estructras correctos.
+### Implementa mecanismos para consultar información de las estructras correctos.
 quien sabe 
 
-# Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
+### Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
 Como use el archivo de la lista de alumnos 
 
 ## Como usar el programa
