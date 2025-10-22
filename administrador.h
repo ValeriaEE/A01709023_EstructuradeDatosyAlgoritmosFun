@@ -28,6 +28,13 @@ private:
     int numMentores = 0;
     int numProfesores = 0;
 
+    void mergeSortEstudiantes(Estudiante** arr, int left, int right);
+    void mergeEstudiantes(Estudiante** arr, int left, int mid, int right);
+    
+    // Declaraciones para Merge Sort de Mentores
+    void mergeSortMentores(Mentor** arr, int left, int right);
+    void mergeMentores(Mentor** arr, int left, int mid, int right);
+
 public:
 
     ~Administrador();  //destructor
@@ -54,8 +61,9 @@ public:
 //Genera una lista de quienes pueden ir al regional 
     void generarListaAsistentes();
 
-    void bubbleSortEstudiantesPorPuntos();
-    void bubbleSortMentoresPorHoras();  
+    
+    void mergeSortEstudiantesPorPuntos();
+    void mergeSortMentoresPorHoras();
 };
 
 // Destructores para todas las personas
@@ -88,7 +96,7 @@ void Administrador::mostrarEstudiantes() {
     cout << "\n--- Estudiantes  ---\n";
 
     // Ordenamos primero
-    bubbleSortEstudiantesPorPuntos();
+    mergeSortEstudiantesPorPuntos();
 
     // Ahora imprimimos
     for (int i = 0; i < numEstudiantes; ++i)
@@ -177,30 +185,132 @@ void Administrador::registrarActividadMentor(int indice,  Actividad &a) {
         registrarActividadParaMentor(mentores[indice], a);
 }
 
-// Ordenar por bubble Sort a los estudiantes 
-void Administrador::bubbleSortEstudiantesPorPuntos() {
-    for (int i = 0; i < numEstudiantes - 1; i++) {
-        for (int j = 0; j < numEstudiantes - i - 1; j++) {
-            if (estudiantes[j]->getPuntosImpact() < estudiantes[j + 1]->getPuntosImpact()) {
-                // Intercambio de apuntadores
-                Estudiante* temp = estudiantes[j];
-                estudiantes[j] = estudiantes[j + 1];
-                estudiantes[j + 1] = temp;
-            }
-        }
+// Métodos auxiliares para Merge Sort
+void Administrador::mergeSortEstudiantes(Estudiante** arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        
+        mergeSortEstudiantes(arr, left, mid);
+        mergeSortEstudiantes(arr, mid + 1, right);
+        mergeEstudiantes(arr, left, mid, right);
     }
 }
-// Ordenar por bubble Sort a los mentores
-void Administrador::bubbleSortMentoresPorHoras() {
-    for (int i = 0; i < numMentores - 1; i++) {
-        for (int j = 0; j < numMentores - i - 1; j++) {
-            if (mentores[j]->getHorasServicio() < mentores[j + 1]->getHorasServicio()) {
-                // Intercambio de apuntadores
-                Mentor* temp = mentores[j];
-                mentores[j] = mentores[j + 1];
-                mentores[j + 1] = temp;
-            }
+
+void Administrador::mergeEstudiantes(Estudiante** arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    
+    // Crear arrays temporales
+    Estudiante** leftArr = new Estudiante*[n1];
+    Estudiante** rightArr = new Estudiante*[n2];
+    
+    // Copiar datos a arrays temporales
+    for (int i = 0; i < n1; i++)
+        leftArr[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        rightArr[j] = arr[mid + 1 + j];
+    
+    // Merge de los arrays temporales
+    int i = 0, j = 0, k = left;
+    
+    while (i < n1 && j < n2) {
+        if (leftArr[i]->getPuntosImpact() >= rightArr[j]->getPuntosImpact()) {
+            arr[k] = leftArr[i];
+            i++;
+        } else {
+            arr[k] = rightArr[j];
+            j++;
         }
+        k++;
+    }
+    
+    // Copiar elementos restantes
+    while (i < n1) {
+        arr[k] = leftArr[i];
+        i++;
+        k++;
+    }
+    
+    while (j < n2) {
+        arr[k] = rightArr[j];
+        j++;
+        k++;
+    }
+    
+    // Liberar memoria
+    delete[] leftArr;
+    delete[] rightArr;
+}
+
+// Ordenar por Merge Sort a los estudiantes (orden descendente por puntos)
+void Administrador::mergeSortEstudiantesPorPuntos() {
+    if (numEstudiantes > 0) {
+        mergeSortEstudiantes(estudiantes, 0, numEstudiantes - 1);
     }
 }
+
+// Métodos para mentores
+void Administrador::mergeSortMentores(Mentor** arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        
+        mergeSortMentores(arr, left, mid);
+        mergeSortMentores(arr, mid + 1, right);
+        mergeMentores(arr, left, mid, right);
+    }
+}
+
+void Administrador::mergeMentores(Mentor** arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    
+    // Crear arrays temporales
+    Mentor** leftArr = new Mentor*[n1];
+    Mentor** rightArr = new Mentor*[n2];
+    
+    // Copiar datos a arrays temporales
+    for (int i = 0; i < n1; i++)
+        leftArr[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        rightArr[j] = arr[mid + 1 + j];
+    
+    // Merge de los arrays temporales
+    int i = 0, j = 0, k = left;
+    
+    while (i < n1 && j < n2) {
+        if (leftArr[i]->getHorasServicio() >= rightArr[j]->getHorasServicio()) {
+            arr[k] = leftArr[i];
+            i++;
+        } else {
+            arr[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+    
+    // Copiar elementos restantes
+    while (i < n1) {
+        arr[k] = leftArr[i];
+        i++;
+        k++;
+    }
+    
+    while (j < n2) {
+        arr[k] = rightArr[j];
+        j++;
+        k++;
+    }
+    
+    // Liberar memoria
+    delete[] leftArr;
+    delete[] rightArr;
+}
+
+// Ordenar por Merge Sort a los mentores (orden descendente por horas)
+void Administrador::mergeSortMentoresPorHoras() {
+    if (numMentores > 0) {
+        mergeSortMentores(mentores, 0, numMentores - 1);
+    }
+}
+
 #endif
