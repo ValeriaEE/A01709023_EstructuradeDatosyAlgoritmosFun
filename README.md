@@ -51,7 +51,15 @@ Caso promedio =  O(n log n)
 Peor caso = O(n log n)
 
 ### B Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
-Analisis de complejidad de lista doblemente encadenada 
+Por accion dentro del archivo dlist.h
+add() = O(1)
+getAt() = O(n)
+setAt() = O(n)
+removeAt() = O(1)
+removeAt() = O(n)
+removeAt() = O(n)
+clear() = O(n)
+toString() = O(n)
 
 ## SICT0302 Toma de Decisiones
 ### A Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
@@ -66,7 +74,7 @@ En comparación de Bubble Sort, que solo es eficiente con listas muy pequeñas o
 En conclusión, elegí Merge Sort porque  es constante y confiable,, mantiene la estabilidad de los datos, y puede manejar grandes volúmenes de información sin comprometer lo eficiente que es.  Por eso es el ideal para mi proyecto, pues necesito ordenar los integrantes del equipo según sus puntos o sus horas de servicio, garantizando una organización clara y justa para determinar quiénes pueden asistir a los eventos regionales.
 
 ### B Selecciona una estructura de datos adecuada al problema y la usa correctamente.
-Para este avance cambié un arreglo fijo que medía 100 por una lista doblemente ligada para guardar los integrantes del equipo. Elegí usar una  lista doblemente ligada porque:
+Para este avance cambié un arreglo fijo que medía 100 por una lista doblemente ligada para guardar los integrantes del equipo. Esto lo hice crenaod otro archivo llamado dlist.h y lo utilize en administrador. Elegí usar una  lista doblemente ligada porque:
 
 La lista doblemente ligada me  permite insertar y eliminar estudiantes, mentores o profesores fácilmente, incluso en medio de la lista. Esto es muy bueno para mi programa porque para un equipo tan dinámico como TecDroid donde la gente se va y llega y los puntos van cambiando se necesita poder modificarlo. 
 
