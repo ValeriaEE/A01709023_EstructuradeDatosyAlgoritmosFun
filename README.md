@@ -66,7 +66,16 @@ En comparación de Bubble Sort, que solo es eficiente con listas muy pequeñas o
 En conclusión, elegí Merge Sort porque  es constante y confiable,, mantiene la estabilidad de los datos, y puede manejar grandes volúmenes de información sin comprometer lo eficiente que es.  Por eso es el ideal para mi proyecto, pues necesito ordenar los integrantes del equipo según sus puntos o sus horas de servicio, garantizando una organización clara y justa para determinar quiénes pueden asistir a los eventos regionales.
 
 ### B Selecciona una estructura de datos adecuada al problema y la usa correctamente.
-Porque elgi la lista doblemente encadenada 
+Para este avance cambié un arreglo fijo que medía 100 por una lista doblemente ligada para guardar los integrantes del equipo. Elegí usar una  lista doblemente ligada porque:
+
+La lista doblemente ligada me  permite insertar y eliminar estudiantes, mentores o profesores fácilmente, incluso en medio de la lista. Esto es muy bueno para mi programa porque para un equipo tan dinámico como TecDroid donde la gente se va y llega y los puntos van cambiando se necesita poder modificarlo. 
+
+Me permite recorrer la lista hacia adelante y hacia atrás, lo cual es útil para organizar la supervisión y ordenar por puntos o horas.
+
+Facilita gestionar distintos tipos de integrantes usando polimorfismo. Como estudiante, profesor y mentor que son personas. 
+
+Es eficiente y flexible para un equipo dinámico como TecDroid, donde los integrantes cambian, el grupo crece y se hace más pequeño, las actividades se van actualizando, etc. 
+
 
 
 ## SICT0303 Implementa Acciones Científicas
