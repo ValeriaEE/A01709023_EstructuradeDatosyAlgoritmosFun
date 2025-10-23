@@ -33,17 +33,57 @@ Este sistema ayuda a mantener el control del equipo de forma automatizada, asegu
 
 ## SICT0301 Evalua los Componentes 
 ### A Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
-Analisis de complejidad de merge sort 
+**División del arreglo:**
+ Cada vez se divide el arreglo en dos mitades. **log₂(n)**
+
+**Combinación de subarreglos:**
+ En cada nivel de recursión, se comparan y combinan todos los elementos una vez. **O(n)**
+
+**Combinando ambos procesos:**
+Niveles de división → **O(log n)**
+Trabajo por nivel → **O(n)**
+ Complejidad total:
+ **O(nlog⁡n)O(n \log n)O(nlogn)**
+
+**Complejidad**
+Mejor caso = O(n log n)
+Caso promedio =  O(n log n)
+Peor caso = O(n log n)
 
 ### B Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
-Analisis de complejidad de lista doblemente encadenada 
+Por accion dentro del archivo dlist.h
+add() = O(1)
+getAt() = O(n)
+setAt() = O(n)
+removeAt() = O(1)
+removeAt() = O(n)
+removeAt() = O(n)
+clear() = O(n)
+toString() = O(n)
 
 ## SICT0302 Toma de Decisiones
 ### A Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
-Porque elegi merge sort 
+Para mi proyecto, decidí utilizar Merge Sort por varias características que lo hacen el más adecuado: 
+
+Una de las principales razones es su complejidad constante de O(n log n) tanto en el mejor como en el peor de los casos. Esto lo convierte en una excelente opción para manejar arreglos grandes y desordenados de objetos, como en mi programa, donde se almacenan estudiantes y mentores con distintos valores de puntos CAS o de horas de servicio.
+
+Además, Merge Sort es un algoritmo estable, lo que significa que si dos elementos tienen el mismo valor en el criterio de ordenamiento (por ejemplo, dos estudiantes con la misma cantidad de puntos CAS), el algoritmo mantiene su orden relativo original en la lista. Esto es importante en mi proyecto, ya que cada estudiante o mentor tiene múltiples atributos (nombre, ID, rol, etc.), y mantener la coherencia entre ellos al ordenar mejora la claridad y precisión del sistema.
+
+En comparación de Bubble Sort, que solo es eficiente con listas muy pequeñas o casi ordenadas, Merge Sort se mantiene eficiente y predecible sin importar el estado inicial de los datos.
+
+En conclusión, elegí Merge Sort porque  es constante y confiable,, mantiene la estabilidad de los datos, y puede manejar grandes volúmenes de información sin comprometer lo eficiente que es.  Por eso es el ideal para mi proyecto, pues necesito ordenar los integrantes del equipo según sus puntos o sus horas de servicio, garantizando una organización clara y justa para determinar quiénes pueden asistir a los eventos regionales.
 
 ### B Selecciona una estructura de datos adecuada al problema y la usa correctamente.
-Porque elgi la lista doblemente encadenada 
+Para este avance cambié un arreglo fijo que medía 100 por una lista doblemente ligada para guardar los integrantes del equipo. Esto lo hice crenaod otro archivo llamado dlist.h y lo utilize en administrador. Elegí usar una  lista doblemente ligada porque:
+
+La lista doblemente ligada me  permite insertar y eliminar estudiantes, mentores o profesores fácilmente, incluso en medio de la lista. Esto es muy bueno para mi programa porque para un equipo tan dinámico como TecDroid donde la gente se va y llega y los puntos van cambiando se necesita poder modificarlo. 
+
+Me permite recorrer la lista hacia adelante y hacia atrás, lo cual es útil para organizar la supervisión y ordenar por puntos o horas.
+
+Facilita gestionar distintos tipos de integrantes usando polimorfismo. Como estudiante, profesor y mentor que son personas. 
+
+Es eficiente y flexible para un equipo dinámico como TecDroid, donde los integrantes cambian, el grupo crece y se hace más pequeño, las actividades se van actualizando, etc. 
+
 
 
 ## SICT0303 Implementa Acciones Científicas
