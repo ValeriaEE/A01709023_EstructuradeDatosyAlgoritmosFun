@@ -1,0 +1,22 @@
+# Formato: nombre,edad,puntosImpact,area,tipoColab
+
+Andrea Aguirre,18,30,Ingeniería,Mesa 
+Diego Ramírez,17,30,Administración,Mesa 
+Sofía Torres,16,10,Acción social,Mesa 
+Alejandro Mendoza,15,Ingeniería,Mesa 
+Camila Vargas,14,22,Administración,Mesa 
+Daniel Herrera,15,27,Acción social,Mesa 
+Mariana López,16,5,Acción social,Colaborador 
+Javier Castillo,16,8,Ingeniería,Colaborador
+Natalia Morales,17,13,Acción social,Colaborador
+Luis Fernández,17,20,Administración,Colaborador
+Isabella Gómez,18,22,Administración,Colaborador
+Carlos Rojas,18,18,Administración,Colaborador
+Gabriela Sánchez,19,33,Acción social,Colaborador
+Fernando Cruz,19,30,Administración,Colaborador
+Ana Beltrán,14,35,Ingeniería,Colaborador
+Ricardo Pacheco,17,39,Ingeniería,Colaborador
+Laura Medina,16,27,Administración,Colaborador
+Miguel Aguirre,18,22,Ingeniería,Colaborador
+Daniela Rivera,16,15,Ingeniería,Colaborador
+Andrés Salazar,15,30,Ingeniería,Colaborador

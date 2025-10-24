@@ -13,6 +13,10 @@ int main() {
 	//Se crea un objeto administrador que maneja todo 
     Administrador admin; 
     int opcion; //Se usa para navegar el menu 
+    admin.cargarEstudiantesDesdeArchivo("estudiantes.txt");
+    admin.cargarMentoresDesdeArchivo("mentores.txt");
+    admin.cargarProfesoresDesdeArchivo("profesores.txt");
+    
 
     do {
 		//El menu imprime opciones al usuario y espera una entrada

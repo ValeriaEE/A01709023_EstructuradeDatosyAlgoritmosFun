@@ -1,3 +1,8 @@
+/*Mejoras que hare en el siguiente avance:
+ crear una lista de actividades y poder asignarlas desde un indice
+ mejorar el menu de entrada
+ disminuir los casos donde el programa pueda fallar (entradas incorrectas, etc.)
+*/
 #ifndef ADMINISTRADOR_H_
 #define ADMINISTRADOR_H_
 
@@ -8,6 +13,9 @@
 #include "persona.h"
 #include "actividad.h"
 #include "dlist.h"
+//Includes para leer los archivos y recuperar los datos
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -60,6 +68,10 @@ public:
     int getnumEstudiantes() const;
     int getnumMentores() const;
     int getnumProfesores() const;
+
+    bool cargarEstudiantesDesdeArchivo(const string& nombreArchivo);
+    bool cargarMentoresDesdeArchivo(const string& nombreArchivo);
+    bool cargarProfesoresDesdeArchivo(const string& nombreArchivo);
 };
 
 // Constructor
@@ -367,4 +379,142 @@ void Administrador::generarListaAsistentes() {
         cout << "- " << profesores.getAt(i)->mostrarInfo() << endl;
     }
 }
+
+// Método  para cargar estudiantes
+bool Administrador::cargarEstudiantesDesdeArchivo(const string& nombreArchivo) {
+    ifstream archivo(nombreArchivo);
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo: " << nombreArchivo << endl;
+        return false;
+    }
+
+    string linea;
+    int lineCount = 0;
+    int estudiantesCargados = 0;
+    
+    
+    while (getline(archivo, linea)) {
+        lineCount++;
+        // Saltar líneas vacías o comentarios
+        if (linea.empty() || linea[0] == '#') continue;
+        
+        istringstream ss(linea);
+        string nombre, area, tipoColab;
+        int edad, puntosImpact;
+        
+        // nombre,edad,puntosImpact,area,tipoColab
+        if (getline(ss, nombre, ',') &&
+            (ss >> edad) && ss.ignore() &&
+            (ss >> puntosImpact) && ss.ignore() &&
+            getline(ss, area, ',') &&
+            getline(ss, tipoColab)) {
+            
+            // Crear el estudiante con el constructor correcto
+            Estudiante* nuevoEstudiante = new Estudiante(nombre, edad, puntosImpact, area, tipoColab);
+            estudiantes.add(nuevoEstudiante);
+            estudiantesCargados++;
+            
+            
+            
+        } else {
+            ss.clear();
+        }
+    }
+    
+    archivo.close();
+    return estudiantesCargados > 0; // Retorna true si se cargó al menos uno
+}
+
+
+// Método  para cargar mentores
+bool Administrador::cargarMentoresDesdeArchivo(const string& nombreArchivo) {
+    ifstream archivo(nombreArchivo);
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo: " << nombreArchivo << endl;
+        return false;
+    }
+
+    string linea;
+    int lineCount = 0;
+    int MentoresCargados = 0;
+    
+    
+    while (getline(archivo, linea)) {
+        lineCount++;
+        // Saltar líneas vacías o comentarios
+        if (linea.empty() || linea[0] == '#') continue;
+        
+        istringstream ss(linea);
+        string nombre;
+        int edad, horasServicio;
+        
+        
+        if (getline(ss, nombre, ',') &&
+            (ss >> edad) && ss.ignore() &&
+            (ss >> horasServicio) && ss.ignore()){
+            
+            
+            // Crear el estudiante con el constructor correcto
+            Mentor* nuevoMentor = new Mentor(nombre, edad, horasServicio);
+            mentores.add(nuevoMentor);
+            MentoresCargados++;
+            
+            
+            
+        } else {
+            ss.clear();
+        }
+    }
+    
+    archivo.close();
+    return MentoresCargados > 0; // Retorna true si se cargó al menos uno
+}
+
+
+// Método  para cargar profesores 
+bool Administrador::cargarProfesoresDesdeArchivo(const string& nombreArchivo) {
+    ifstream archivo(nombreArchivo);
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo: " << nombreArchivo << endl;
+        return false;
+    }
+
+    string linea;
+    int lineCount = 0;
+    int profesoresCargados = 0;
+    
+    
+    while (getline(archivo, linea)) {
+        lineCount++;
+        // Saltar líneas vacías o comentarios
+        if (linea.empty() || linea[0] == '#') continue;
+        
+        istringstream ss(linea);
+        string nombre, puesto, departamento;
+        int edad;
+        
+        
+        if (getline(ss, nombre, ',') &&
+            (ss >> edad) && ss.ignore() &&
+            getline(ss, puesto, ',') &&
+            getline(ss, departamento)) {
+            
+            // Crear el estudiante con el constructor correcto
+            Profesor* nuevoProfesor = new Profesor(nombre, edad, puesto, departamento);
+            profesores.add(nuevoProfesor);
+            profesoresCargados++;
+            
+            
+            
+        } else {
+            ss.clear();
+        }
+    }
+    
+    archivo.close();
+    return profesoresCargados > 0; // Retorna true si se cargó al menos uno
+}
+
+
+
 #endif
