@@ -498,7 +498,7 @@ bool Administrador::cargarProfesoresDesdeArchivo(const string& nombreArchivo) {
             getline(ss, puesto, ',') &&
             getline(ss, departamento)) {
             
-            /
+            
             Profesor* nuevoProfesor = new Profesor(nombre, edad, puesto, departamento);
             profesores.add(nuevoProfesor);
             profesoresCargados++;
