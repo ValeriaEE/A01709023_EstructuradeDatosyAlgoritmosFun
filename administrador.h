@@ -203,7 +203,6 @@ void Administrador::mergeSortEstudiantesPorPuntos() {
     DLink<Estudiante*>* nuevaCabeza = mergeSortEstudiantes(estudiantes.getHead());
     estudiantes.setHead(nuevaCabeza);
     
-    // Reconstruir tail
     DLink<Estudiante*>* actual = nuevaCabeza;
     while (actual != NULL && actual->getNext() != NULL) {
         actual = actual->getNext();
@@ -268,7 +267,7 @@ void Administrador::mergeSortMentoresPorHoras() {
     DLink<Mentor*>* nuevaCabeza = mergeSortMentores(mentores.getHead());
     mentores.setHead(nuevaCabeza);
     
-    // Reconstruir tail
+    
     DLink<Mentor*>* actual = nuevaCabeza;
     while (actual != NULL && actual->getNext() != NULL) {
         actual = actual->getNext();
@@ -325,7 +324,7 @@ DLink<Mentor*>* Administrador::mergeSortMentores(DLink<Mentor*>* cabeza) {
     
     return mergeMentores(izquierda, derecha);
 }
-// Generar lista de asistentes al regional
+// lista de asistentes al regional
 void Administrador::generarListaAsistentes() {
     cout << "\n--- Lista de asistentes al regional ---\n";
     
@@ -409,7 +408,7 @@ bool Administrador::cargarEstudiantesDesdeArchivo(const string& nombreArchivo) {
             getline(ss, area, ',') &&
             getline(ss, tipoColab)) {
             
-            // Crear el estudiante con el constructor correcto
+            // Crear el estudiante 
             Estudiante* nuevoEstudiante = new Estudiante(nombre, edad, puntosImpact, area, tipoColab);
             estudiantes.add(nuevoEstudiante);
             estudiantesCargados++;
@@ -454,7 +453,7 @@ bool Administrador::cargarMentoresDesdeArchivo(const string& nombreArchivo) {
             (ss >> horasServicio) && ss.ignore()){
             
             
-            // Crear el estudiante con el constructor correcto
+            
             Mentor* nuevoMentor = new Mentor(nombre, edad, horasServicio);
             mentores.add(nuevoMentor);
             MentoresCargados++;
@@ -499,7 +498,7 @@ bool Administrador::cargarProfesoresDesdeArchivo(const string& nombreArchivo) {
             getline(ss, puesto, ',') &&
             getline(ss, departamento)) {
             
-            // Crear el estudiante con el constructor correcto
+            /
             Profesor* nuevoProfesor = new Profesor(nombre, edad, puesto, departamento);
             profesores.add(nuevoProfesor);
             profesoresCargados++;
