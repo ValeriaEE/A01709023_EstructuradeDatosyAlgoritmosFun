@@ -88,10 +88,10 @@ Es eficiente y flexible para un equipo dinámico como TecDroid, donde los integr
 
 ## SICT0303 Implementa Acciones Científicas
 ### Implementa mecanismos para consultar información de las estructras correctos.
-quien sabe 
+
 
 ### Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
-Como use el archivo de la lista de alumnos 
+En mi proyecto, implementé mecanismos de lectura de archivos para cargar los datos de estudiantes, mentores y profesores a las estructuras de datos del sistema. Cada tipo de integrante tiene su propio archivo de texto, en el que cada línea representa un objeto con sus atributos separados por comas (por ejemplo, nombre, edad, puntos o horas de servicio, área, tipo de colaborador). Para procesar estos archivos, se utiliza la clase ifstream de <fstream> para abrir y leer cada línea, y stringstream de <sstream> para separar cada componente de la línea y convertirlos a los tipos de datos correctos. Cada registro leído se convierte en un objeto dinámico de su clase (Estudiante, Mentor o Profesor) y se agrega a la lista doblemente ligada con los métodos agregarEstudiante, agregarMentor y agregarProfesor. De esta forma, el sistema carga lo datos y los agrega a la lista. 
 
 ## Como usar el programa
 Compilar el programa
