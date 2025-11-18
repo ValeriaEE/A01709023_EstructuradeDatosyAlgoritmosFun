@@ -520,7 +520,7 @@ bool Administrador::cargarProfesoresDesdeArchivo(const string& nombreArchivo) {
     return profesoresCargados > 0; // Retorna true si se cargó al menos uno
 }
 
-// --- Implementación de Escritura de Archivos ---
+
 
 void Administrador::guardarEstudiantesEnArchivo(const string& nombreArchivo) {
     ofstream archivo(nombreArchivo); // Abre el archivo en modo sobrescritura
@@ -529,8 +529,7 @@ void Administrador::guardarEstudiantesEnArchivo(const string& nombreArchivo) {
         return;
     }
 
-    // Recorremos la lista y escribimos en el MISMO formato que leemos
-    // Formato: nombre,edad,puntosImpact,area,tipoColab
+    
     for (int i = 0; i < estudiantes.size(); i++) {
         Estudiante* e = estudiantes.getAt(i);
         archivo << e->getNombre() << ","
@@ -584,10 +583,9 @@ void Administrador::guardarProfesoresEnArchivo(const string& nombreArchivo) {
 }
 
 void Administrador::guardarTodo() {
-    // Asegúrate de usar los mismos nombres de archivo que usas para leer
     guardarEstudiantesEnArchivo("estudiantes.txt"); 
     guardarMentoresEnArchivo("mentores.txt");
     guardarProfesoresEnArchivo("profesores.txt");
 }
-
+//prueba
 #endif
