@@ -183,7 +183,9 @@ int main() {
 
 	//El menú sigue repitiéndose hasta que el usuario elige la opción 0
     } while (opcion != 0);
-
-    cout << "Gracias por usar el sistema.\n";
+        cout << "Gracias por usar el sistema.\n";
+        cout << "Guardando datos antes de salir..." << endl;
+        admin.guardarTodo(); 
+        cout << "Saliendo del sistema. ¡Hasta luego!" << endl;
     return 0;
 }
