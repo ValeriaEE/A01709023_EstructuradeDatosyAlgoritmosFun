@@ -96,6 +96,8 @@ caso promedio = O(n)
 
 peor caso = O(n)
 
+### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
+
 
 ## SICT0302 Toma de Decisiones
 ### A Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
@@ -111,15 +113,21 @@ Decidí reemplazar el arreglo estático inicial por una Lista Doblemente Ligada 
 3. Bidireccionalidad: La estructura doblemente ligada permite recorrer la información en ambos sentidos, facilitando algoritmos de ordenamiento y revisión de datos. 
 
 ## SICT0303 Implementa Acciones Científicas
-### Implementa mecanismos para consultar información de las estructras correctos.
+### A Implementa mecanismos para consultar información de las estructras correctos.
 Para acceder a la información dentro de la estructura DList, implementé el método getAt(int index).
 
 Mecanismo: Este método recibe un índice entero, inicia un puntero auxiliar en el head de la lista y realiza un ciclo for para avanzar a través de los punteros next hasta llegar a la posición deseada.
 
 Retorno: Devuelve un puntero al objeto almacenado (Estudiante*, Mentor*, etc.), permitiendo el uso de polimorfismo para invocar métodos como mostrarInfo() o getPuntosImpact().
 
-### Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
+### B Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
 En mi proyecto, implementé mecanismos de lectura de archivos para cargar los datos de estudiantes, mentores y profesores a las estructuras de datos del sistema. Cada tipo de integrante tiene su propio archivo de texto, en el que cada línea representa un objeto con sus atributos separados por comas (por ejemplo, nombre, edad, puntos o horas de servicio, área, tipo de colaborador). Para procesar estos archivos, se utiliza la clase ifstream de <fstream> para abrir y leer cada línea, y stringstream de <sstream> para separar cada componente de la línea y convertirlos a los tipos de datos correctos. Cada registro leído se convierte en un objeto dinámico de su clase (Estudiante, Mentor o Profesor) y se agrega a la lista doblemente ligada con los métodos agregarEstudiante, agregarMentor y agregarProfesor. De esta forma, el sistema carga lo datos y los agrega a la lista. 
+
+### C Implementa mecanismos de escritura de archivos para guardar los datos de las estructuras de manera correcta.
+
+Se implementa un mecanismo para que la información que metemos al programa se guarede y no se pierda al salir. Para esto, usamos la clase std::ofstream de C++. 
+ Cuando le das a salir, abrimos los archivos. La función de ofstream automáticamente borra lo que había antes y lo sustituye por la lista actual. Esto es para que no se nos dupliquen los integrantes.Recorremos la lista doblemente ligada completa, uno por uno. Como tenemos que visitar a cada persona, esto nos cuesta O(n). A cada integrante, le sacamos todos sus datos usando sus getters y los escribimos en el archivo de texto separados por comas. Lo hacemos así para que sea exactamente igual a como los leemos cuando inicia el programa.
+
 
 ## Como usar el programa
 Compilar el programa
