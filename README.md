@@ -49,8 +49,11 @@ Trabajo por nivel → **O(n)**
  **O(nlog⁡n)O(n \log n)O(nlogn)**
 
 **Complejidad**
+
 Mejor caso = O(n log n)
+
 Caso promedio =  O(n log n)
+
 Peor caso = O(n log n)
 
 ### B Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
@@ -60,24 +63,39 @@ Se utiliza una Lista Doblemente Ligada para todos los integrantes del equipo ges
 Por accion dentro del archivo dlist.h
 
 add() 
+
 mejor caso = O(1)
+
 caso promedio = O(1)
+
 peor caso = O(1)
 
+
 getAt()
+
 mejor caso = O(1)
+
 caso promedio = O(n)
+
 peor caso = O(n)
 
+
 removeAt() 
+
 mejor caso = O(1)
+
 caso promedio = O(n)
+
 peor caso = O(n)
 
 clear() 
+
 mejor caso = O(1)
+
 caso promedio = O(n)
+
 peor caso = O(n)
+
 
 ## SICT0302 Toma de Decisiones
 ### A Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
