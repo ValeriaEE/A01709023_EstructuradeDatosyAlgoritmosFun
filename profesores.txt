@@ -1,5 +1,3 @@
-#Formato: nombre,edad,puesto,departamento 
-
 Georgina Jiménez,32,coach,tecnologia
 Rubén romero,27,headcoach,tecnologia
 Arturo Pineda,53,coach,ciencias

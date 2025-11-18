@@ -1,9 +1,6 @@
-# Formato: nombre,edad,puntosImpact,area,tipoColab
-
 Andrea Aguirre,18,30,Ingeniería,Mesa 
 Diego Ramírez,17,30,Administración,Mesa 
 Sofía Torres,16,10,Acción social,Mesa 
-Alejandro Mendoza,15,Ingeniería,Mesa 
 Camila Vargas,14,22,Administración,Mesa 
 Daniel Herrera,15,27,Acción social,Mesa 
 Mariana López,16,5,Acción social,Colaborador 
