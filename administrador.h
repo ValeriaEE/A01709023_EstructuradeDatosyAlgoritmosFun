@@ -1,8 +1,4 @@
-/*Mejoras que hare en el siguiente avance:
- crear una lista de actividades y poder asignarlas desde un indice
- mejorar el menu de entrada
- disminuir los casos donde el programa pueda fallar (entradas incorrectas, etc.)
-*/
+//Includes necesitados en el programa
 #ifndef ADMINISTRADOR_H_
 #define ADMINISTRADOR_H_
 
@@ -17,8 +13,11 @@
 #include <fstream>
 #include <sstream>
 
+#include<vector>
+
 using namespace std;
 
+//Clase Administrador
 class Administrador {
 private:
     DList<Estudiante*> estudiantes;
@@ -32,6 +31,8 @@ private:
     DLink<Mentor*>* mergeSortMentores(DLink<Mentor*>* cabeza);
     DLink<Mentor*>* mergeMentores(DLink<Mentor*>* izquierda, DLink<Mentor*>* derecha);
     DLink<Mentor*>* dividirListaMentores(DLink<Mentor*>* cabeza);
+
+    std::vector<Actividad*> actividades;
 
     void clear(); 
 
@@ -78,6 +79,10 @@ public:
     void guardarMentoresEnArchivo(const string& nombreArchivo);
     void guardarProfesoresEnArchivo(const string& nombreArchivo);
     void guardarTodo(); // Una función maestra para guardar los 3 al mismo tiempo
+
+    bool cargarActividadesDesdeArchivo(const string& nombreArchivo);
+    void mostrarActividadesDisponibles();
+    Actividad* getActividad(int indice);
 };
 
 // Constructor
@@ -97,7 +102,14 @@ void Administrador::clear() {
     
     for (int i = profesores.size() - 1; i >= 0; i--) delete profesores.getAt(i);
     profesores.clear();
+
+    for (Actividad* a : actividades) {
+        delete a;
+    }
+    actividades.clear();
 }
+
+//Metodos para modificar personas 
 
 void Administrador::agregarEstudiante(Estudiante* e) { estudiantes.add(e); }
 void Administrador::agregarMentor(Mentor* m) { mentores.add(m); }
@@ -178,6 +190,8 @@ void Administrador::mostrarProfesores() {
         std::cout << i + 1 << ". " << prof->mostrarInfo() << std::endl;
     }
 }
+
+//Metodos para registar actividedes 
 
 void Administrador::registrarActividadParaEstudiante(Estudiante* e, Actividad &a) {
     e->setPuntosImpact(e->getPuntosImpact() + a.getNumPuntos());
@@ -330,6 +344,7 @@ DLink<Mentor*>* Administrador::mergeSortMentores(DLink<Mentor*>* cabeza) {
     
     return mergeMentores(izquierda, derecha);
 }
+
 // lista de asistentes al regional
 void Administrador::generarListaAsistentes() {
     cout << "\n--- Lista de asistentes al regional ---\n";
@@ -427,7 +442,7 @@ bool Administrador::cargarEstudiantesDesdeArchivo(const string& nombreArchivo) {
     }
     
     archivo.close();
-    return estudiantesCargados > 0; // Retorna true si se cargó al menos uno
+    return estudiantesCargados > 0; 
 }
 
 
@@ -472,7 +487,7 @@ bool Administrador::cargarMentoresDesdeArchivo(const string& nombreArchivo) {
     }
     
     archivo.close();
-    return MentoresCargados > 0; // Retorna true si se cargó al menos uno
+    return MentoresCargados > 0; 
 }
 
 
@@ -517,7 +532,7 @@ bool Administrador::cargarProfesoresDesdeArchivo(const string& nombreArchivo) {
     }
     
     archivo.close();
-    return profesoresCargados > 0; // Retorna true si se cargó al menos uno
+    return profesoresCargados > 0; 
 }
 
 
@@ -587,5 +602,64 @@ void Administrador::guardarTodo() {
     guardarMentoresEnArchivo("mentores.txt");
     guardarProfesoresEnArchivo("profesores.txt");
 }
-//prueba
+
+// Metodos para cargar actividades
+bool Administrador::cargarActividadesDesdeArchivo(const string& nombreArchivo) {
+    ifstream archivo(nombreArchivo);
+    if (!archivo.is_open()) {
+        cout << "No se pudo abrir el archivo de actividades: " << nombreArchivo << endl;
+        return false;
+    }
+
+    string linea;
+    int actividadesCargadas = 0;
+    
+    while (getline(archivo, linea)) {
+        // Ignorar líneas vacías o comentarios
+        if (linea.empty() || linea[0] == '#') continue; 
+        
+        istringstream ss(linea);
+        string nombre, lugar;
+        int puntos, horas;
+        
+        // El formato DEBE ser: nombre,puntos,horas,lugar
+        if (getline(ss, nombre, ',') && 
+            (ss >> puntos) && ss.ignore() &&
+            (ss >> horas) && ss.ignore() &&
+            getline(ss, lugar)) { 
+            
+            Actividad* nuevaActividad = new Actividad(nombre, puntos, horas, lugar);
+            actividades.push_back(nuevaActividad);
+            actividadesCargadas++;
+        }
+    }
+    
+    archivo.close();
+    return actividadesCargadas > 0;
+}
+
+// Metodo para mostrar actividades
+void Administrador::mostrarActividadesDisponibles() {
+    cout << "\n--- 📝 Actividades Disponibles ---\n";
+    if (actividades.empty()) {
+        cout << "No hay actividades cargadas." << endl;
+        return;
+    }
+    for (size_t i = 0; i < actividades.size(); ++i) {
+        cout << i + 1 << ". " << actividades[i]->getNombre() 
+             << " | Puntos CAS: " << actividades[i]->getNumPuntos()
+             << " | Horas: " << actividades[i]->getHoras()
+             << " | Lugar: " << actividades[i]->getLugar() << endl;
+    }
+}
+
+// Metodo para obtener una actividad por índice
+Actividad* Administrador::getActividad(int indice) {
+    // El vector usa índices base 0, el usuario usa base 1
+    if (indice > 0 && indice <= (int)actividades.size()) {
+        return actividades[indice - 1]; // Ajuste de índice
+    }
+    return nullptr;
+}
+
 #endif

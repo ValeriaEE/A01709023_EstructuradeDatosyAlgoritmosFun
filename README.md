@@ -46,7 +46,7 @@ El algoritmo implementado para ordenar a los estudiantes (por puntos) y mentores
 Niveles de división → **O(log n)**
 Trabajo por nivel → **O(n)**
  Complejidad total:
- **O(nlog⁡n)O(n \log n)O(nlogn)**
+ **O(n log ⁡n)**
 
 **Complejidad**
 
@@ -90,21 +90,110 @@ peor caso = O(n)
 
 clear() 
 
-mejor caso = O(1)
+mejor caso = O(n)
 
 caso promedio = O(n)
 
 peor caso = O(n)
 
-### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
+### C  Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
 
+**Lista doblemente ligada**
+
+add(T val): O(1) 
+
+getAt(int index): O(n)
+
+setAt(int index, T val): O(n)
+
+removeAt(int index): O(n)
+
+size(): O(1)
+
+clear(): O(n)
+
+
+**Metodos de administrador** 
+
+agregarEstudiante/Mentor/Profesor(): O(1)
+
+eliminarEstudiante/Mentor/Profesor(int): O(n)
+
+getEstudiante/Mentor/Profesor(int): O(n) 
+
+mostrarEstudiantes/Mentores/Profesores(): O(n)
+
+
+**Merge Sort** 
+
+mergeSortEstudiantesPorPuntos(): O(n log n)
+
+mergeSortMentoresPorHoras(): O(n log n)
+
+Funciones auxiliares (merge, dividirLista): O(n) cada una
+
+
+**Actividades** 
+
+registrarActividadParaEstudiante/Mentor(): O(1)
+
+cargarActividadesDesdeArchivo(): O(n) 
+
+mostrarActividadesDisponibles(): O(n)
+
+
+**Archivos**
+
+Funciones cargar...DesdeArchivo(): O(n)
+
+Funciones guardar...EnArchivo(): O(n)
+
+#### Peor Caso
+mergeSortEstudiantesPorPuntos()	O(n log n)	
+
+getAt(último_elemento)	O(n)	
+
+eliminarEstudiante(0)	O(n)	
+
+mostrarEstudiantes()	O(n log n)	
+
+generarListaAsistentes()	O(n + m + p)
+
+
+#### Mejor Caso 
+mergeSortEstudiantesPorPuntos()	O(1)	
+
+agregarEstudiante()	O(1)	
+
+getAt(0)	O(1)	
+
+eliminarEstudiante(0)	O(1)	
+
+mostrarEstudiantes()	O(1)
+
+
+#### Caso Promedio
+
+getAt(index)	O(n/2)	
+
+mergeSort	O(n log n)	
+
+eliminarEstudiante()	O(n/2)	
+
+mostrarEstudiantes()	O(n log n)	
+
+generarListaAsistentes()	O(n)
+
+
+#### Complejidad final
+La complejidad final del programa es O(n log n), que dominan los algoritmos de merge sort. 
 
 ## SICT0302 Toma de Decisiones
 ### A Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
 Para este proyecto, seleccioné Merge Sort sobre opciones como Bubble Sort o Quick Sort basándome en las siguientes características técnicas:
 1. Eficiencia: A diferencia de Bubble Sort (O(n^2)), Merge Sort mantiene una complejidad de O(n \log n) en todos los casos. Dado que el equipo TecDroid puede crecer, es importante que el tiempo de ejecución no aumente cuadráticamente con el número de miembros.
 2. Estabilidad: Merge Sort es un algoritmo estable. Si dos estudiantes tienen la misma cantidad de puntos, el algoritmo preserva el orden original de registro. Esto es crucial para mantener la equidad en listas de espera o antigüedad
-3. .Manejo de Listas Ligadas: Merge Sort es ideal para listas ligadas ya que no requiere acceso aleatorio a memoria (como Quick Sort), sino que trabaja manipulando punteros next y prev, lo cual es eficiente en esta estructura.
+3. Manejo de Listas Ligadas: Merge Sort es ideal para listas ligadas ya que no requiere acceso aleatorio a memoria (como Quick Sort), sino que trabaja manipulando punteros next y prev, lo cual es eficiente en esta estructura.
 
 ### B Selecciona una estructura de datos adecuada al problema y la usa correctamente.
 Decidí reemplazar el arreglo estático inicial por una Lista Doblemente Ligada (DList) debido a la naturaleza dinámica del equipo:
@@ -125,19 +214,19 @@ En mi proyecto, implementé mecanismos de lectura de archivos para cargar los da
 
 ### C Implementa mecanismos de escritura de archivos para guardar los datos de las estructuras de manera correcta.
 
-Se implementa un mecanismo para que la información que metemos al programa se guarede y no se pierda al salir. Para esto, usamos la clase std::ofstream de C++. 
- Cuando le das a salir, abrimos los archivos. La función de ofstream automáticamente borra lo que había antes y lo sustituye por la lista actual. Esto es para que no se nos dupliquen los integrantes.Recorremos la lista doblemente ligada completa, uno por uno. Como tenemos que visitar a cada persona, esto nos cuesta O(n). A cada integrante, le sacamos todos sus datos usando sus getters y los escribimos en el archivo de texto separados por comas. Lo hacemos así para que sea exactamente igual a como los leemos cuando inicia el programa.
+Se implementa un mecanismo para que la información que metemos al programa se guarde y no se pierda al salir. Para esto, usamos la clase std::ofstream de C++. 
+ Cuando le das a salir, abrimos los archivos. La función de ofstream automáticamente borra lo que había antes y lo sustituye por la lista actual. Esto es para que no se nos dupliquen los integrantes.Recorremos la lista doblemente ligada completa, uno por uno. Como tenemos que visitar a cada persona, esto nos cuesta O(n). A cada integrante se obtienen todos sus datos usando sus getters y los escribimos en el archivo de texto separados por comas. Lo hacemos así para que sea exactamente igual a como los leemos cuando inicia el programa.
 
 
-## Como usar el programa
+## Cómo usar el programa
 Compilar el programa
 
-***g++ menuTD.cpp -o menuTD***
+***g++ main.cpp -o menu**
 
 
 Ejecutar el programa
 
-***./menuTD***
+***./menu***
 
 
 Navegar el menú

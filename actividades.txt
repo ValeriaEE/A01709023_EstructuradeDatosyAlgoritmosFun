@@ -1,0 +1,5 @@
+# Nombre, Puntos CAS, Horas de Servicio, Lugar
+Taller de Electronica Basica, 20, 5, Laboratorio D
+Voluntariado en Albergue, 15, 8, Centro Social
+Competencia FIRST Regional, 0, 40, CINTERMEX
+Sesion de Programacion C++, 10, 3, Aula 310

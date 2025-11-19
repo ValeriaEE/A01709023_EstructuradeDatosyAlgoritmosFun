@@ -4,7 +4,7 @@
 #include "persona.h"
 #include <iostream>
 #include <string>
-#include <sstream>  // necesario para usar stringstream
+#include <sstream>  
 
 
 using namespace std;
