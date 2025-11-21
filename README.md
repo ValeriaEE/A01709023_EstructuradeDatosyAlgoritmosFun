@@ -2,6 +2,15 @@
 Proyecto de la clase TC1031.603 Programacion de estructura de datos y algoritmos fundamentales 
 Valeria Escalante Campos A01709023 
 
+# Problemas 
+
+Problema1:  https://youtu.be/VCW_rwWdzZ0
+
+Problema 2: https://youtu.be/PgMEvOVIFMU?si=tyEESfUpg3RtXVZ1
+
+Problema 3: https://youtu.be/QpMFiz-vHgI?si=9mneuDT474I8pBqP
+
+
 ## Contexto
 Este programa está diseñado para mejorar la organización del grupo estudiantil de robótica TecDroid 3354. Dentro del equipo existen tres tipos principales de integrantes:
 
